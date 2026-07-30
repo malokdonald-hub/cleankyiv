@@ -105,22 +105,22 @@ export function BeforeAfter() {
           onPointerCancel={handlePointerUp}
           className="relative mx-auto aspect-[16/10] w-full max-w-4xl cursor-ew-resize select-none overflow-hidden rounded-xl shadow-card [touch-action:none]"
         >
-          {/* Base layer: "before" */}
+          {/* Base layer: "before" (dirty) */}
           <Image
-            src={IMAGES.before}
+            src={IMAGES.after}
             alt={t('before_after.alt_before')}
             fill
             sizes="(max-width: 896px) 100vw, 896px"
             className="pointer-events-none object-cover"
           />
 
-          {/* Clipped layer: "after" */}
+          {/* Clipped layer: "after" (clean) */}
           <div
             className="absolute inset-0"
             style={{ clipPath: `inset(0 ${100 - value}% 0 0)` }}
           >
             <Image
-              src={IMAGES.after}
+              src={IMAGES.before}
               alt={t('before_after.alt_after')}
               fill
               sizes="(max-width: 896px) 100vw, 896px"

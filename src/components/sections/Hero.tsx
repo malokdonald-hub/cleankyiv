@@ -34,7 +34,7 @@ export function Hero() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-text-primary/90 via-text-primary/70 to-text-primary/30"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/90 via-black/75 to-black/50"
       />
 
       <div className="mx-auto max-w-7xl px-4 pb-20 pt-32 md:pb-28 md:pt-40 lg:px-8 lg:pb-36 lg:pt-48">
@@ -46,7 +46,7 @@ export function Hero() {
             {t('hero.h1')}
           </motion.h1>
 
-          <motion.p {...fade(0.15)} className="mt-6 text-base leading-relaxed text-white/90 md:text-lg">
+          <motion.p {...fade(0.15)} className="mt-6 text-base leading-relaxed text-white md:text-lg">
             {t('hero.subtitle')}
           </motion.p>
 

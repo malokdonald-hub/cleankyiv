@@ -36,12 +36,19 @@ export async function generateMetadata({
   if (!isLocale(params.locale)) return {};
   const dict = getDictionary(params.locale);
 
+  const baseUrl = 'https://cleankyiv-sigma.vercel.app';
+
   return {
+    metadataBase: new URL(baseUrl),
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: {
-      canonical: `/${params.locale}`,
-      languages: { uk: '/ua', ru: '/ru' },
+      canonical: `${baseUrl}/${params.locale}`,
+      languages: {
+        uk: `${baseUrl}/ua`,
+        ru: `${baseUrl}/ru`,
+        'x-default': `${baseUrl}/ua`,
+      },
     },
     openGraph: {
       title: dict.meta.title,

@@ -89,7 +89,7 @@ export function MobileMenu({
             animate={{ x: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { x: '100%' }}
             transition={{ type: 'tween', duration: reduceMotion ? 0 : 0.3, ease: 'easeOut' }}
-            className="absolute right-0 top-0 flex h-full w-[85%] max-w-sm flex-col bg-surface p-6 shadow-card-hover"
+            className="absolute right-0 top-0 flex h-full w-[280px] max-w-xs flex-col bg-surface p-6 shadow-card-hover"
           >
             <div className="mb-8 flex items-center justify-between">
               <span className="font-heading text-lg font-bold text-primary">
@@ -99,7 +99,7 @@ export function MobileMenu({
                 type="button"
                 onClick={onClose}
                 aria-label={t('common.menu_close')}
-                className="rounded-lg p-2 text-text-secondary transition-colors hover:bg-primary-light hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="flex min-h-[48px] min-w-[48px] items-center justify-center rounded-lg p-2 text-text-secondary transition-colors hover:bg-primary-light hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <X aria-hidden="true" className="h-6 w-6" />
               </button>
@@ -111,7 +111,7 @@ export function MobileMenu({
                   key={link.href}
                   href={link.href}
                   onClick={onClose}
-                  className="rounded-lg px-3 py-3 font-heading text-lg font-medium text-text-primary transition-colors hover:bg-primary-light hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  className="flex min-h-[48px] items-center rounded-lg px-3 py-3 font-heading text-lg font-medium text-text-primary transition-colors hover:bg-primary-light hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   {link.label}
                 </a>
@@ -121,7 +121,7 @@ export function MobileMenu({
             <div className="mt-auto space-y-4 border-t border-border pt-6">
               <a
                 href={CONTACTS.phoneHref}
-                className="flex items-center gap-2 font-heading text-lg font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="flex min-h-[48px] items-center gap-2 font-heading text-lg font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <Phone aria-hidden="true" className="h-5 w-5" />
                 {CONTACTS.phoneDisplay}
