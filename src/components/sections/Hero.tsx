@@ -29,7 +29,8 @@ export function Hero() {
         fill
         priority
         sizes="100vw"
-        className="-z-10 object-cover"
+        className="-z-10 object-cover object-center"
+        style={{ objectPosition: 'center 20%' }}
       />
       <div
         aria-hidden="true"

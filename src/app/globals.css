@@ -7,10 +7,16 @@
     scroll-behavior: smooth;
     /* Keeps anchor targets clear of the fixed header. */
     scroll-padding-top: 5rem;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    width: 100%;
   }
 
   body {
     @apply bg-background font-body text-text-primary antialiased;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
+    width: 100%;
   }
 
   h1,
@@ -18,6 +24,11 @@
   h3,
   h4 {
     @apply font-heading;
+  }
+
+  /* Prevent horizontal scroll from any element */
+  * {
+    box-sizing: border-box;
   }
 
   :focus-visible {

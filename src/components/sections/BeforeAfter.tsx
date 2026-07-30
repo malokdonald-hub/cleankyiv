@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { useCallback, useRef, useState, type KeyboardEvent, type PointerEvent, type TouchEvent } from 'react';
 import Image from 'next/image';
 import { MoveHorizontal } from 'lucide-react';
 import { useTranslation } from '@/i18n/TranslationProvider';
@@ -24,10 +24,33 @@ export function BeforeAfter() {
     setValue(clamp(((clientX - rect.left) / rect.width) * 100));
   }, []);
 
-  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+  // Touch event handlers for mobile devices.
+  // Note: React attaches touchstart/touchmove listeners as passive by default,
+  // so event.preventDefault() would throw/no-op here. Page-scroll is instead
+  // blocked declaratively via the `touch-action: none` CSS on the container.
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    if (event.touches.length !== 1) return;
     dragging.current = true;
-    event.currentTarget.setPointerCapture(event.pointerId);
-    updateFromClientX(event.clientX);
+    updateFromClientX(event.touches[0].clientX);
+  };
+
+  const handleTouchMove = (event: TouchEvent<HTMLDivElement>) => {
+    if (!dragging.current || event.touches.length !== 1) return;
+    updateFromClientX(event.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    dragging.current = false;
+  };
+
+  // Pointer event handlers (mouse + touch fallback)
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    // Only handle primary pointer (not right click, etc.)
+    if (event.isPrimary) {
+      dragging.current = true;
+      event.currentTarget.setPointerCapture(event.pointerId);
+      updateFromClientX(event.clientX);
+    }
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -71,11 +94,16 @@ export function BeforeAfter() {
 
         <div
           ref={containerRef}
+          // Touch event handlers for mobile
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          // Pointer event handlers (mouse + touch fallback)
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
-          className="relative mx-auto aspect-[16/10] w-full max-w-4xl cursor-ew-resize select-none overflow-hidden rounded-xl shadow-card"
+          className="relative mx-auto aspect-[16/10] w-full max-w-4xl cursor-ew-resize select-none overflow-hidden rounded-xl shadow-card [touch-action:none]"
         >
           {/* Base layer: "before" */}
           <Image

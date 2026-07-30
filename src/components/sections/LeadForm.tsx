@@ -84,7 +84,7 @@ export function LeadForm() {
               </Button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+            <form onSubmit={handleSubmit(onSubmit)} noValidate className="relative space-y-5">
               {/* Honeypot: hidden from users and screen readers, visible to naive bots. */}
               <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
                 <label htmlFor="company">Company</label>
