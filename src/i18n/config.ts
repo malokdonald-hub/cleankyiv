@@ -1,15 +1,15 @@
-import uk from './uk.json';
-import ru from './ru.json';
+import ukDict from './uk.json';
+import ruDict from './ru.json';
 
-export const locales = ['uk', 'ru'] as const;
+export const locales = ['ua', 'ru'] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = 'uk';
+export const defaultLocale: Locale = 'ua';
 
-export type Dictionary = typeof uk;
+export type Dictionary = typeof ukDict;
 
 const dictionaries: Record<Locale, Dictionary> = {
-  uk,
-  ru: ru as Dictionary,
+  ua: ukDict,
+  ru: ruDict as Dictionary,
 };
 
 export function isLocale(value: string): value is Locale {
@@ -21,6 +21,6 @@ export function getDictionary(locale: Locale): Dictionary {
 }
 
 export const localeNames: Record<Locale, string> = {
-  uk: 'UA',
+  ua: 'UA',
   ru: 'RU',
 };

@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { defaultLocale, locales } from '@/i18n/config';
 
-/** Redirects locale-less URLs (/, /about) to the default locale (/uk, /uk/about). */
+/** Redirects locale-less URLs (/, /about) to the default locale (/ua, /ua/about). */
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 

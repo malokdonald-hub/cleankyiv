@@ -41,7 +41,7 @@ export async function generateMetadata({
     description: dict.meta.description,
     alternates: {
       canonical: `/${params.locale}`,
-      languages: { uk: '/uk', ru: '/ru' },
+      languages: { uk: '/ua', ru: '/ru' },
     },
     openGraph: {
       title: dict.meta.title,

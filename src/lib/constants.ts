@@ -37,10 +37,10 @@ export const CONTACTS = {
 } as const;
 
 export const IMAGES = {
-  hero: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1920',
-  advantages: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=800',
-  before: 'https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?q=80&w=1000',
-  after: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=1000',
+  hero: '/images/general.webp',
+  advantages: '/images/2.webp',
+  before: '/images/before.webp',
+  after: '/images/after.webp',
 } as const;
 
 export const SECTION_IDS = {
